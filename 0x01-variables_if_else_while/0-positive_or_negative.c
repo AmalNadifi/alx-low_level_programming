@@ -1,9 +1,10 @@
 #include <stdlib.h>
 #include <time.h>
 #include <stdio.h>
-/* main - a program that indicates if a number is positive or negative */
-/* Return : 0 (success) */
-/* betty style doc for function main goes there */
+/**
+ *  main - a program that indicates if a number is positive or negative
+ * Return: 0 (success)
+ */
 int main(void)
 {
 	int n;
