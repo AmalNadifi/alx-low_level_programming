@@ -6,10 +6,10 @@
  */
 int main(void)
 {
-char x;
-for (int x = 'A'; x <= 'Z'; x++)
+char letter;
+for (int letter = 'A'; letter <= 'Z'; letter++)
 {
-	putchar(tolower(x));
+	putchar(tolower(letter));
 }
 putchar('\n');
 return (0);
