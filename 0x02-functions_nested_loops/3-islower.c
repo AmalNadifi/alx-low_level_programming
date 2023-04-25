@@ -2,6 +2,7 @@
 /**
  * _islower - The program checks for lowercase character
  * followed by a new line
+ * @c: The character to print
  * Return: 1 if character is lowercase, otherwise 0
  */
 
