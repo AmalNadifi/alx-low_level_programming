@@ -25,6 +25,7 @@ void jack_bauer(void)
 					_putchar(58);
 					_putchar(c + 48);
 					_putchar(d + 48);
+					_putchar('\n');
 				}
 			}
 		}
