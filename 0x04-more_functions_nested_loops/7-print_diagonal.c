@@ -15,7 +15,7 @@ else
 {
 	int x, y;
 
-	for (x = 1; x < n; x++)
+	for (x = 0; x < n; x++)
 	{
 		for (y = 0; y < n; y++)
 		{
