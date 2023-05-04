@@ -15,7 +15,7 @@ char *cap_string(char *a)
 		while (!(a[x] >= 'a' && a[x] <= 'z'))
 			x++;
 
-		if (a[x - 1] == '' ||
+		if (a[x - 1] == ' ' ||
 				a[x - 1] == '\t' ||
 				a[x - 1] == '\n' ||
 				a[x - 1] == ',' ||
