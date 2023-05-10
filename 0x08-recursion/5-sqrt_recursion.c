@@ -6,6 +6,7 @@
  * Return: the result as an integer
  */
 
+int square_checker(int n, int sqr);
 int _sqrt_recursion(int n)
 {
 	return (sqrt_checker(n, 1));
