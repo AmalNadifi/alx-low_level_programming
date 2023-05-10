@@ -9,7 +9,7 @@
 int square_checker(int n, int sqr);
 int _sqrt_recursion(int n)
 {
-	return (sqrt_checker(n, 1));
+	return (square_checker(n, 1));
 }
 
 /**
