@@ -32,7 +32,7 @@ int main(int argc, char **argv)
 	       printf("%d\n", mincents);
 	}
 	else
-	printf("Eroor\n");
+	printf("Error\n");
 	return (1);
 return (0);
 }
