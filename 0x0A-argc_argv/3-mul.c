@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include <stdlib.h>
 /**
  * main - the program multiplies two numbers
  * the program should print the result of the multiplication
