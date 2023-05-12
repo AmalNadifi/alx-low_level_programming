@@ -11,7 +11,7 @@
 
 int main(int argc, char **argv)
 {
-	if (argc > 1)
+	if (argc == 2)
 	{
 		int x = 0, change = atoi(argv[1]);
 		int mincents = 0;
@@ -20,7 +20,7 @@ int main(int argc, char **argv)
 		do {
 			if (change >= cents[x])
 			{
-				mincents = mincents + change / cents[x];
+				mincents = mincents + (change / cents[x]);
 				change = change % cents[x];
 				if (change % cents[x] == 0)
 				{
