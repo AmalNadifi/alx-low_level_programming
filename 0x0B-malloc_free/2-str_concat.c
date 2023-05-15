@@ -15,9 +15,9 @@ char *str_concat(char *s1, char *s2)
 	char *a_concat;
 
 	if (s1 == 0)
-		s1 = " ";
+		s1 = "";
 	if (s2 == 0)
-		s2 = " ";
+		s2 = "";
 	do {
 		size1++;
 	} while (s1[size1] != '\0');
