@@ -10,7 +10,7 @@
  * Return: the resultant grid , else returns 0 ( on failure)
  */
 
-int **alloc_grid(int width, intt height)
+int **alloc_grid(int width, int height)
 {
 	int **T, a, b;
 
@@ -33,4 +33,3 @@ int **alloc_grid(int width, intt height)
 	}
 	return (T);
 }
-
