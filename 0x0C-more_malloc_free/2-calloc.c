@@ -1,5 +1,27 @@
 #include "main.h"
-#include <stdio.h>
+#include <stdlib.h>
+
+/**
+ * _memset - the function fills the memory with a constant byte
+ * @str: memory to fill
+ * @c: character to copy
+ * @num: number of times to copy c
+ * Return: resultant pointer to str
+ */
+
+char *_memset(char *str, char c, unsigned int num)
+{
+	char *p = str;
+
+	while (num--)
+	{
+		*str++ = c;
+	}
+	return (p);
+}
+
+#include "main.h"
+#include <stdlib.h>
 
 /**
  * _calloc - the function allocates memory for an array, using malloc
@@ -11,8 +33,6 @@
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
 	void *res;
-	char p, *str, j;
-	int i;
 
 	if (size == 0 || nmemb == 0)
 	{
@@ -23,16 +43,7 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 	{
 		return (NULL);
 	}
+	_memset(res, 0, sizeof(int) * nmemb);
 
-	else
-	{
-		*p = str;
-		while (i--)
-		{
-			*str++ = j;
-		}
-		return (p);
-	}
 	return (res);
 }
-
