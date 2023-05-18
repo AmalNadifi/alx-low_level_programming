@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 /**
- * _realloc - the function reallocates a memory block,
+ * *_realloc - the function reallocates a memory block,
  * using malloc and free
  * @ptr: the pointer to previous memory allocated with a call to malloc
  * @old_size: how many bytes to allocate for ptr
@@ -13,7 +13,7 @@
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
 	void *res;
-	int x;
+	unsigned int x;
 
 	if (new_size == old_size)
 	{
@@ -22,7 +22,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	if (ptr == NULL)
 	{
 		res = malloc(new_size);
-		if (p == NULL)
+		if (ptr == NULL)
 		{
 			return (NULL);
 		}
