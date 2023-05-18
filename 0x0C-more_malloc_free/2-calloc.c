@@ -38,12 +38,12 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 	{
 		return (NULL);
 	}
-	res = malloc(sizeof(int) * nmemb);
+	res = malloc(size * nmemb);
 	if (res == 0)
 	{
 		return (NULL);
 	}
-	_memset(res, 0, sizeof(int) * nmemb);
+	_memset(res, 0, size * nmemb);
 
 	return (res);
 }
