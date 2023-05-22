@@ -32,6 +32,7 @@ char *_strcopy(char *dest, char *src)
 
 	do {
 		dest[x] = src[x];
+		x++;
 	} while (src[x]);
 	dest[x] = '\0';
 
