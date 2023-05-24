@@ -11,7 +11,7 @@
 int main(int argc, char **argv)
 {
 	char *ptr = (char *)main;
-	int num_b;
+	int num_b, h = 0;
 
 	if (argc != 2)
 	{
@@ -25,7 +25,13 @@ int main(int argc, char **argv)
 		exit(2);
 	}
 	do {
-		printf("%02hhx%s", *ptr++, num_b ? " " : "\n");
-	} while (num_b--);
+		if (h == num_b - 1)
+		{
+			printf("%02hhx\n", ptr[h]);
+			break;
+		}
+		printf("%02hhx ", ptr[h]);
+		h++;
+	} while (h < num_b);
 	return (0);
 }
