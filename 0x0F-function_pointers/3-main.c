@@ -21,7 +21,6 @@ int main(int argc, char **argv)
 	x = atoi(argv[1]);
 	y = atoi(argv[3]);
 	op_main_fun = get_op_func(argv[2]);
-	
 	if (!op_main_fun)
 	{
 		printf("Error\n");
