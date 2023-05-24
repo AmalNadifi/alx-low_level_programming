@@ -28,5 +28,5 @@ int (*get_op_func(char *s))(int, int)
 		x++;
 	}
 
-	return (0);
+	return (NULL);
 }
