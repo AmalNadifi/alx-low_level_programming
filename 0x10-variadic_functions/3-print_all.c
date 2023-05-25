@@ -34,7 +34,7 @@ void print_all(const char * const format, ...)
 					break;
 				case 's':
 					elem = va_arg(l, char *);
-					if (!elem)
+					if (elem == NULL)
 						elem = "(nil)";
 					printf("%s%s", separator, elem);
 					break;
