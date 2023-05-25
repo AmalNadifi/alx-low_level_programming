@@ -18,14 +18,14 @@ void print_strings(const char *separator, const unsigned int n, ...)
 	char *mem;
 
 	va_start(q, n);
-	for ( x = 0; x < n;  x++)
+	for (x = 0; x < n; x++)
 	{
 		mem = va_arg(q, char *);
 		if (mem == NULL)
 			printf("(nil)");
 		else
 			printf("%s", mem);
-		if (x != ( n - 1) && separator != NULL)
+		if (x != (n - 1) && separator != NULL)
 			printf("%s", separator);
 	}
 	printf("\n");
