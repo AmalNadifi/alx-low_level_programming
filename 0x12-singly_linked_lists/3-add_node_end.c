@@ -18,27 +18,25 @@ list_t *add_node_end(list_t **head, const char *str)
 	{
 		return (NULL);
 	}
+	new_str->str = strdup(str);
 
 	while (str[length])
 	{
 		length++;
 	}
-	if (str)
+	new_str->len = length;
+	new_str->next = NULL;
+	if (tmp == NULL)
 	{
-		new_str->str = strdup(str);
-		new_str->len = length;
+		*head = new_str;
 	}
-	if (tmp != NULL)
+	else
 	{
 		while (tmp->next)
 		{
 			tmp = tmp->next;
 		}
 		tmp->next = new_str;
-	}
-	else
-	{
-		*head = new_str;
 	}
 	return (new_str);
 }
