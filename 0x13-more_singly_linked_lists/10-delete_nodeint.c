@@ -10,8 +10,7 @@
 int delete_nodeint_at_index(listint_t **head, unsigned int index)
 {
 	unsigned int x = 0;
-	listint_t *tmp, *p_node; /*p_node is used for the previous node
-				   in the linked list*/
+	listint_t *tmp, *p_node;/*p_node is the previous node in the linked list*/
 
 	if (head == NULL || *head == NULL)
 	{
