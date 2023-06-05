@@ -10,6 +10,10 @@ void free_listint2(listint_t **head)
 {
 	listint_t *my_tmp2;
 
+	if (head == NULL)
+	{
+		return;
+	}
 	while (*head != NULL)
 	{
 		my_tmp2 = *head;
