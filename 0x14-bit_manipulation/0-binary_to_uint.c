@@ -13,6 +13,10 @@ unsigned int binary_to_uint(const char *b)
 	unsigned int a; /* the converted number*/
 	unsigned int counter;
 
+	if (b == NULL)
+	{
+		return (0);
+	}
 	for (a = 0, counter = 0; b[counter] != '\0'; counter++)
 	{
 		if (b[counter] == '1')
