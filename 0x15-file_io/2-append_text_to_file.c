@@ -2,8 +2,8 @@
 
 /**
  * append_text_to_file - the function appends text at the end of chosen file
- * @filname: the pointer to the chosen file
- * @text_context: the pointer to the content to append
+ * @filename: the pointer to the chosen file
+ * @text_content: the pointer to the content to append
  * Return: 1 (success) or -1 (failure)
  */
 
@@ -28,6 +28,6 @@ int append_text_to_file(const char *filename, char *text_content)
 	{
 		return (-1);
 	}
-	close (o_var);
+	close(o_var);
 	return (1);
 }
