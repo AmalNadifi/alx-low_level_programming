@@ -40,9 +40,11 @@ int main(int argc, char **argv)
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n",
 					argv[1]), exit(98);
 	}
-	if (close(src) == -1)
+	src = close(src);
+	dest = close(dest);
+	if (src)
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", src), exit(100);
-	if (close(dest) == -1)
+	if (dest)
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", dest), exit(100);
 	return (0);
 }
