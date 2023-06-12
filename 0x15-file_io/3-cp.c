@@ -26,13 +26,15 @@ int main(int argc, char **argv)
 			| S_IRGRP | S_IWGRP | S_IROTH);
 	if (dest == -1)
 	{
-		dprintf(STDERR_FILENO, "Eroor: Can't write to %s\n", argv[2]), exit(99);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]),
+			exit(99);
 	}
 	while ((r_var = read(src, a, 1024)) > 0)
 	{
 		if (write(dest, a, r_var) != r_var)
 		{
-			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]), exit(99);
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n",
+					argv[2]), exit(99);
 		}
 	}
 	if (r_var == -1)
