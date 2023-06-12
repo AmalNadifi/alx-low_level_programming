@@ -34,11 +34,11 @@ int main(int argc, char **argv)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]), exit(99);
 		}
-		if (r_var == -1)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n",
+	}
+	if (r_var == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n",
 					argv[1]), exit(98);
-		}
 	}
 	if (close(src) == -1)
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", src), exit(100);
