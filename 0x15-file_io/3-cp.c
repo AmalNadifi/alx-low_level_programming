@@ -9,7 +9,7 @@
 
 int main(int argc, char *argv[])
 {
-	int src, dest, r_var, w_var;
+	int src, dest, r_var, w_var, test = 1024;
 	char a[1024];
 
 	if (argc != 3)
@@ -32,18 +32,20 @@ int main(int argc, char *argv[])
 		close(src);
 		exit(99);
 	}
-	r_var = read(src, a, 1024);
-	if (r_var == -1)
+	while (test == 1024)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n",
-				argv[1]);
-		exit(98);
-	}
-	w_var = write(dest, a, r_var);
-	if (w_var < r_var)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
-		exit(99);
+		r_var = read(src, a, 1024);
+		if (r_var == -1)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+			exit(98);
+		}
+		w_var = write(dest, a, r_var);
+		if (w_var < r_var)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
+			exit(99);
+		}
 	}
 	if (close(src) == -1)
 	{
