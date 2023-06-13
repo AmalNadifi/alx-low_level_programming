@@ -15,7 +15,7 @@ void p_magic(Elf64_Ehdr h)
 	printf("  Magic:   ");
 	for (counter = 0; counter < EI_NIDENT; counter++)
 		printf("%2.2x%s", h.e_ident[counter],
-			counter == EI_NIDENT - 1 ? "\n" : " ");
+			(counter == EI_NIDENT - 1) ? "\n" : " ");
 }
 
 /**
@@ -81,7 +81,6 @@ void p_version(Elf64_Ehdr h)
 		case EV_NONE:
 			printf("%s", "");
 		break;
-		break;
 	}
 	printf("\n");
 }
@@ -97,7 +96,7 @@ void p_osabi(Elf64_Ehdr h)
 	switch (h.e_ident[EI_OSABI])
 	{
 		case ELFOSABI_NONE:
-			printf("UNIX - System v");
+			printf("UNIX - System V");
 			break;
 		case ELFOSABI_HPUX:
 			printf("UNIX - HP-UX");
@@ -118,7 +117,7 @@ void p_osabi(Elf64_Ehdr h)
 			printf("UNIX - IRIX");
 			break;
 		case ELFOSABI_FREEBSD:
-			printf("UNIX - FressBSD");
+			printf("UNIX - FreeBSD");
 			break;
 		case ELFOSABI_TRU64:
 			printf("UNIX - TRU64");
@@ -174,14 +173,13 @@ void p_abiversion(Elf64_Ehdr h)
  */
 void p_type(Elf64_Ehdr h)
 {
-	char *b;
+	char *b = (char *)&h.e_type;
 	int idx;
 
 	printf("  Type:                              ");
 	idx = 0;
 	if (h.e_ident[EI_DATA] == ELFDATA2MSB)
 		idx = 1;
-	b = (char *)&h.e_type;
 	switch (b[idx])
 	{
 		case ET_NONE:
@@ -200,7 +198,7 @@ void p_type(Elf64_Ehdr h)
 			printf("CORE (Core file)");
 			break;
 		default:
-			printf("<unknown: %x", b[idx]);
+			printf("<unknown>: %x", b[idx]);
 			break;
 	}
 	printf("\n");
@@ -213,11 +211,10 @@ void p_type(Elf64_Ehdr h)
  */
 void p_entry(Elf64_Ehdr h)
 {
-	int x, l;
-	unsigned char *b;
+	int x, l = 0;
+	unsigned char *b = (unsigned char *)&h.e_entry;
 
 	printf("  Entry point address:               0x");
-	b = (unsigned char *)&h.e_entry;
 	if (h.e_ident[EI_DATA] != ELFDATA2MSB)
 	{
 		x = h.e_ident[EI_CLASS] == ELFCLASS64 ? 7 : 3;
@@ -270,8 +267,7 @@ int main(int argc, char **argv)
 		printf("ELF Header:\n");
 	}
 	else
-		dprintf(STDERR_FILENO, "NOT AN ELF FILE: %s\n", argv[1]),
-				exit(98);
+		dprintf(STDERR_FILENO, "NOT AN ELF FILE: %s\n", argv[1]), exit(98);
 	p_magic(h);
 	p_class(h);
 	p_data(h);
