@@ -1,5 +1,5 @@
 #include "main.h"
-#include "elfh"
+#include "elf.h"
 
 void p_osabi_more(Elf64_Ehdr ptr);
 
@@ -12,7 +12,7 @@ void p_magic(Elf64_Ehdr ptr)
 {
 	int counter;
 
-	printf("  Magic:   ";
+	printf("  Magic:   ");
 	for (counter = 0; counter < EI_NIDENT; counter++)
 		printf("%2.2x%s", ptr.e_ident[counter],
 			counter == EI_NIDENT - 1 ? "\n" : " ");
@@ -99,7 +99,7 @@ void p_osabi(Elf64_Ehdr ptr)
 		case ELFOSABI_NONE:
 			printf("UNIX - System v");
 			break;
-		case ELFOSABI_HPUX
+		case ELFOSABI_HPUX:
 			printf("UNIX - HP-UX");
 			break;
 		case ELFOSABI_NETBSD:
@@ -137,7 +137,7 @@ void p_osabi(Elf64_Ehdr ptr)
  */
 void p_osabi_more(Elf64_Ehdr ptr)
 {
-	switch(ptr.e_ident[EI_OSABI])
+	switch (ptr.e_ident[EI_OSABI])
 	{
 		case ELFOSABI_MODESTO:
 			printf("Novell - Modesto");
@@ -179,9 +179,9 @@ void p_type(Elf64_Ehdr ptr)
 
 	printf("  Type:                              ");
 	idx = 0;
-	if (ptr.e_ident[EI_DATA] == ELFDATAMSB)
+	if (ptr.e_ident[EI_DATA] == ELFDATA2MSB)
 		idx = 1;
-	*b = (char *)&ptr.e_type;
+	b = (char *)&ptr.e_type;
 	switch (b[idx])
 	{
 		case ET_NONE:
@@ -217,14 +217,14 @@ void p_entry(Elf64_Ehdr ptr)
 	unsigned char *b;
 
 	printf("  Entry point address:               0x");
-	*b = (unsigned char *)&ptr.e_entry;
+	b = (unsigned char *)&ptr.e_entry;
 	if (ptr.e_ident[EI_DATA] != ELFDATA2MSB)
 	{
 		x = ptr.e_ident[EI_CLASS] == ELFCLASS64 ? 7 : 3;
 		while (!b[x])
 			x--;
 		printf("%x", b[x--]);
-		for(; i >= 0; x--)
+		for (; x >= 0; x--)
 			printf("%02x", b[x]);
 		printf("\n");
 	}
@@ -247,7 +247,7 @@ void p_entry(Elf64_Ehdr ptr)
  * Return: 0 (success)
  */
 
-int main(int argc, int **argv)
+int main(int argc, char **argv)
 {
 	int o_var;
 	Elf64_Ehdr ptr;
@@ -262,7 +262,7 @@ int main(int argc, int **argv)
 			exit(98);
 	r_var = read(o_var, &ptr, sizeof(ptr));
 	if (r_var < 1 || r_var != sizeof(ptr))
-		dprintf(STDRERR_FILENO, "Can't read from file: %s\n", argv[1]),
+		dprintf(STDERR_FILENO, "Can't read from file: %s\n", argv[1]),
 			exit(98);
 	if (ptr.e_ident[0] == 0x7f && ptr.e_ident[1] == 'E'
 			&& ptr.e_ident[2] == 'L' && ptr.e_ident[3] == 'F')
@@ -274,7 +274,7 @@ int main(int argc, int **argv)
 				exit(98);
 	p_magic(ptr);
 	p_class(ptr);
-	p-data(ptr);
+	p_data(ptr);
 	p_version(ptr);
 	p_osabi(ptr);
 	p_abiversion(ptr);
