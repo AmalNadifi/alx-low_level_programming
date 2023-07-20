@@ -6,7 +6,7 @@
  * Return: void
  */
 
-void free_dlistint(dlistint_t *head);
+void free_dlistint(dlistint_t *head)
 {
 	dlistint_t *var;
 
