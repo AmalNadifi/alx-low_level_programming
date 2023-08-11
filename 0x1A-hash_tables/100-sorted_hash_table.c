@@ -22,13 +22,13 @@ shash_table_t *shash_table_create(unsigned long int size)
 		return (NULL);
 	new_tab->size = size;
 	new_tab->array = malloc(sizeof(shash_node_t *) * size);
+
 	if (new_tab->array == NULL)
 	{
 		return (NULL);
 	}
 	for (x = 0; x < size; x++)
-	       new_tab->array[x] = NULL;
-
+		new_tab->array[x] = NULL;
 	new_tab->shead = NULL;
 	new_tab->stail = NULL;
 	return (new_tab);
