@@ -9,7 +9,7 @@
 void hash_table_print(const hash_table_t *ht)
 {
 	hash_node_t *Temp;
-	unsigned int index, firstPair;
+	unsigned int index = 0, firstPair = 1;
 
 	if (ht == NULL)
 		return;
