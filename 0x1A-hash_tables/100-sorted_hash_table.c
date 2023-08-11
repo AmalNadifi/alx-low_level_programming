@@ -15,7 +15,7 @@ void shash_table_delete(shash_table_t *ht);
 
 shash_table_t *shash_table_create(unsigned long int size)
 {
-	unsigned long int x = 0;
+	unsigned long int x;
 	shash_table_t *new_tab = malloc(sizeof(shash_table_t));
 
 	if (new_tab == NULL)
@@ -23,9 +23,12 @@ shash_table_t *shash_table_create(unsigned long int size)
 	new_tab->size = size;
 	new_tab->array = malloc(sizeof(shash_node_t *) * size);
 	if (new_tab->array == NULL)
+	{
 		return (NULL);
-	for (; x < size; x++)
+	}
+	for (x = 0; x < size; x++)
 	       new_tab->array[x] = NULL;
+
 	new_tab->shead = NULL;
 	new_tab->stail = NULL;
 	return (new_tab);
@@ -172,14 +175,17 @@ void shash_table_print(const shash_table_t *ht)
 void shash_table_print_rev(const shash_table_t *ht)
 {
 	shash_node_t *Temp;
-	unsigned int index = 0, firstPair = 1;
+	unsigned int index = 0, firstPair = 1, last_index = ht->size - 1;
+	unsigned int curr_index;
 
 	if (ht == NULL)
 		return;
 	printf("{");
 	for (; index < ht->size; index++)
 	{
-		for (Temp = ht->array[index]; Temp != NULL; Temp = Temp->sprev)
+		curr_index = last_index - index;
+		firstPair = 1;
+		for (Temp = ht->array[curr_index]; Temp != NULL; Temp = Temp->snext)
 		{
 			if (firstPair == 1)
 			{
