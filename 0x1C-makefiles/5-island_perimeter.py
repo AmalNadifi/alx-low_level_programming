@@ -32,11 +32,11 @@ def island_perimeter(grid):
                 # Checking the adjacent cells and substract 1 for shared side
                 if r > 0 and grid[r - 1][c] == 1:
                     perimeter -= 1
-                if r < rows and grid[r + 1][c] == 1:
+                if r < rows - 1 and grid[r + 1][c] == 1:
                     perimeter -= 1
                 if c > 0 and grid[r][c - 1] == 1:
                     perimeter -= 1
-                if c < columns and grid[r][c + 1] == 1:
+                if c < columns - 1 and grid[r][c + 1] == 1:
                     perimeter -= 1
 
     return perimeter
