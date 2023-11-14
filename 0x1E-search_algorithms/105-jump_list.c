@@ -22,7 +22,7 @@ listint_t *jump_list(listint_t *list, size_t size, int value)
 	     next_jump->n < value;)
 	{
 		current = next_jump;
-		for (prev = jump_step; next_jump->index < prev;
+		for (prev += jump_step; next_jump->index < prev;
 		     next_jump = next_jump->next)
 		{
 			if (next_jump->index + 1 == size)
